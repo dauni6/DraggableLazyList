@@ -2,6 +2,8 @@ package com.example.draggablelazylist
 
 import androidx.compose.foundation.lazy.LazyListItemInfo
 import androidx.compose.foundation.lazy.LazyListState
+import java.util.Collections
+
 /*
     LazyListItemInfo.index is the item's absolute index in the list
     Based on the item's "relative position" with the "currently top" visible item,
@@ -21,9 +23,5 @@ val LazyListItemInfo.offsetEnd: Int
    Moving element in the list
 */
 fun <T> MutableList<T>.move(from: Int, to: Int) {
-    if (from == to)
-        return
-
-    val element = this.removeAt(from) ?: return
-    this.add(to, element)
+    Collections.swap(this, from, to)
 }
